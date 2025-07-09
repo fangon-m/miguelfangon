@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="logo-06.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
 </head>
 <body>
     <!-- Sidebar Navigation -->
@@ -23,9 +24,10 @@
         <section class="hero" id="hero">
             <div class="hero-content">
                 <div class="status-badge">Available for new projects</div>
+
                 
                 <h1>Miguel Fangon</h1>
-                <div class="subtitle">UI/UX Designer & Creative</div>
+                <div class="role"> <span class="subtitle"></span> </div>
                 
                 <p class="description">
                     I'm a passionate designer and creative problem solver dedicated to crafting beautiful, 
@@ -49,7 +51,7 @@
             </div>
             
             <div class="scroll-indicator">
-                View projects
+                Scroll to explore
             </div>
         </section>
 
@@ -124,7 +126,7 @@
             </a>
              <a href="projects/stilib.html">  
                 <div class="portfolio-item uiux">
-                    <img src="STI Library App/Untitled-1-01.jpg" alt="Mobile Library App">
+                    <img src="TI Library App/Untitled-1-01.jpg" alt="Mobile Library App">
                     <div class="portfolio-content">
                         <h3>STI Library</h3>
                         <p>The STI Library App is a mobile solution designed to streamline student access to library resources and services. It allows users to track attendance, monitor borrowed books, and receive real-time updates.</p>
@@ -164,7 +166,7 @@
             </a>
             <a href="projects/trinidad.html">  
                 <div class="portfolio-item graphic">
-                    <img src="TRINIDAD Tour Fest/FINAL-02.jpg" alt="Cyclists' Event Branding">
+                    <img src="TRINIDAD Tour Fest/FESTIVAL-01.jpg" alt="Cyclists' Event Branding">
                     <div class="portfolio-content">
                         <h3>TRINIDAD Tour Festival</h3>
                         <p>TRINIDAD is a branding project for a cycling tour festival located in Doña Remedios Trinidad, designed to celebrate community, endurance, and the spirit of adventure. The identity combines rugged terrain aesthetics with dynamic motion-inspired visuals.</p>
@@ -262,7 +264,7 @@
                     
                     <div class="form-group">
                         <label for="project">Project Type</label>
-                        <input type="text" id="project" name="project" placeholder="UI/UX Design, Branding, Full-Time Position etc.">
+                        <input type="text" id="project" name="project" placeholder="UI/UX Design, Branding, etc.">
                     </div>
                     
                     <div class="form-group">
@@ -278,5 +280,15 @@
 </body>
 
 <script src="script.js"></script>
+
+/* Add Typed.js script to animate the subtitle */
+<script>
+    var typed = new Typed(".subtitle", {
+    strings: ["Graphic Designer", "UI/UX Designer" , "Visual Designer"],
+    typeSpeed: 45,
+    backSpeed: 20,
+    loop: true
+    });
+</script>
 
 </html>
