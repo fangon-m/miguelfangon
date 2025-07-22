@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Miguel Fangon - Project Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../logo-06.png" type="image/png">
+    <style>
+        .skills-sidebar {
+            position: fixed;
+            left: 32px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 330px;
+            background: transparent;
+            border-radius: 15px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 0;
+            gap: 0;
+            z-index: 100;
+        }
+        .skills-sidebar-btn {
+            background: none;
+            border: none;
+            padding: 16px 24px;
+            font-size: 1.1em;
+            color: #222;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .skills-sidebar-btn.active,
+        .skills-sidebar-btn:hover {
+            background: #222;
+            color: #fff;
+        }
+        .skills-section {
+            display: none;
+        }
+        .skills-section.active {
+            display: block;
+        }
+        .skills-main {
+            margin-left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        body {
+            background: #f8fafc;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        .project-view-container {
+            max-width: 900px;
+            margin: 40px auto 40px auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 40px 24px 48px 24px;
+        }
+        .return-btn {
+            display: inline-block;
+            margin-bottom: 32px;
+            background: #222;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 24px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .return-btn:hover {
+            background: #444;
+        }
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .project-description {
+            color: #64748b;
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .project-images {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .project-images img {
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-top: 15px;
+            background: #fff;
+            display: block;
+        }
+         .project-images video {
+            margin: 10px;
+        }
+        .project-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 16px;
+        }
+        .project-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 7px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        @media (max-width: 600px) {
+            .skills-sidebar {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(248,250,252,0.98);
+                box-shadow: none;
+                border-radius: 0;
+                z-index: 200;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                padding: 0;
+                overflow-y: auto;
+                transform: translateY(-100%);
+                transition: transform 0.3s;
+            }
+            .skills-sidebar.open {
+                transform: translateY(0);
+            }
+            .sidebar-toggle {
+                display: block;
+            }
+            .project-view-container {
+                padding: 16px 4px 32px 4px;
+            }
+            .project-title {
+                font-size: 1.5rem;
+            }
+            .skills-sidebar-btn,
+            .return-btn {
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+            }
+        }
+        @media (min-width: 601px) {
+            .sidebar-toggle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="sidebar-toggle" style="position:fixed; right:16px; top:16px; z-index:201; background:#222; color:#fff; border:none; border-radius:10px; padding:10px 18px; font-size:1.1em; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <i class="fa fa-bars"></i>
+    </button>
+    <div class="skills-sidebar" style="margin-top:60px;">
+        <a href="../index.html#projects" class="return-btn" style="display:block; margin:0 0 24px 0; background:#222; color:#fff; border:none; border-radius:10px; padding:10px 24px; font-size:1em; cursor:pointer; text-decoration:none; transition:background 0.2s; text-align:center;">&larr; Return</a>
+        <button class="skills-sidebar-btn active" data-section="reverie">Reverie</button>
+        <button class="skills-sidebar-btn" data-section="azion">Azion</button>
+        <button class="skills-sidebar-btn" data-section="velith">Velith</button>
+        <button class="skills-sidebar-btn active" data-section="nomino">Nomino</button>
+        <button class="skills-sidebar-btn" data-section="goat">GOAT</button>
+        <button class="skills-sidebar-btn" data-section="stilib">STI Library App</button>
+        <button class="skills-sidebar-btn active" data-section="trinidad">TRINIDAD Tour Festival</button>
+        <button class="skills-sidebar-btn" data-section="eidolon">EIDOLON</button>
+        <button class="skills-sidebar-btn" data-section="neo">Neo Neuro VR</button>
+        <button class="skills-sidebar-btn" data-section="logofolio">Logofolio</button>
+        <!-- Add more buttons for other sections as needed -->
+    </div>
+    <div class="skills-main">
+        <div class="project-view-container" id="section-reverie">
+            <div class="project-title">Reverie</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:32px; text-align:center;">
+                Reverie is an editorial magazine focused on endangered wildlife, blending emotional storytelling with poetic visuals. The project aims to evoke empathy and reflection, making extinction a personal and memorable experience.
+            </div>
+            <div class="project-images">
+                <img src="Reverie/content-01.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Reverie/content-02.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">InDesign</span>
+                <span class="project-tag">Figma</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-azion">
+            <div class="project-title">Azion</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:32px; text-align:center;">
+                Azion is a football apparel brand with a bold, performance-focused e-commerce site. The design emphasizes precision, simplicity, and a sharp edge to reflect the brand’s commitment to quality and innovation.
+            </div>
+            <div class="project-images">
+                <img src="Azion/b-01.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Azion/b-02.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Azion/b-03.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">Figma</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-velith">
+            <div class="project-title">Velith</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:32px; text-align:center;">
+                Velith is a premium bike brand platform, combining sleek minimalism with user-centric shopping. The design balances style and performance, appealing to both casual riders and cycling enthusiasts.
+            </div>
+            <div class="project-images">
+                <img src="Velith/behance-01.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Velith/behance-02.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Velith/behance-03.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">Figma</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-nomino">
+            <div class="project-title">Nomino</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:32px; text-align:center;">
+                Nomino is a travel app that lets users explore destinations and book flights instantly. It features real-time advisories, cultural tips, and exclusive vouchers, making travel planning seamless and engaging.
+            </div>
+            <div class="project-images">
+                <img src="Nomino/behance-01.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Nomino/behance-02.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Nomino/behance-03.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Nomino/behance-04.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">Figma</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-goat">
+            <div class="project-title">GOAT</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:32px; text-align:center;">
+                GOAT is a UK-based dairy brand, offering handcrafted goat milk products. The branding combines playful rural cues with a clean, artisanal aesthetic, celebrating small-batch quality and local roots.
+            </div>
+            <div class="project-images">
+                <img src="Goat/feednshts-01.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Goat/feednshts-02.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Goat/feednshts-03.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Goat/feednshts-04.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Goat/feednshts-05.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Goat/feednshts-06.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-stilib">
+            <div class="project-title">STI Library App</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:32px; text-align:center;">
+                The STI Library App streamlines student access to resources and services. It allows users to track attendance, monitor borrowed books, and receive real-time updates for a more efficient library experience.
+            </div>
+            <div class="project-images">
+                <img src="STI Library App/Untitled-1-01.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="STI Library App/Untitled-1-02.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">Figma</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-trinidad">
+            <div class="project-title">TRINIDAD Tour Festival</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:32px; text-align:center;">
+                TRINIDAD is a cycling tour festival brand, designed to celebrate community, endurance, and adventure. The identity blends rugged terrain aesthetics with dynamic visuals to capture the spirit of the event.
+            </div>
+            <div class="project-images">
+                <img src="TRINIDAD Tour Fest/FINAL-01.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="TRINIDAD Tour Fest/FINAL-02.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="TRINIDAD Tour Fest/FINAL-03.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="TRINIDAD Tour Fest/FINAL-04.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="TRINIDAD Tour Fest/FINAL-05.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="TRINIDAD Tour Fest/FINAL-06.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="TRINIDAD Tour Fest/FINAL-11.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="TRINIDAD Tour Fest/FINAL-12.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-eidolon">
+            <div class="project-title">EIDOLON</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:32px; text-align:center;">
+                EIDOLON is an AI-driven digital experience, blending abstract storytelling with surreal visuals. It serves as a visual journal, exploring future identity through minimal interactive elements and dreamlike design.
+            </div>
+            <div class="project-images">
+                <img src="EIDOLON/asd-01.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="EIDOLON/asd-02.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">Figma</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-neo">
+            <div class="project-title">Neo Neuro VR</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:32px; text-align:center;">
+                Neo Neuro VR is a medical virtual reality branding project for clinical and educational use. The identity blends advanced technology with a calming, professional tone to support both learning and patient care.
+            </div>
+            <div class="project-images">
+                <img src="Neo Neuro/ig-10.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Neo Neuro/ig-11.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Neo Neuro/ig-12.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Neo Neuro/ig-13.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Neo Neuro/ig-14.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Neo Neuro/ig-16.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Neo Neuro/ig-17.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-logofolio">
+            <div class="project-title">Logofolio</div>
+            <div class="project-description" style="color:#7b8794; font-size:1.08rem; margin-bottom:12px; text-align:center;">
+                Logofolio is a curated collection of personal logo design explorations. Each logo varies in concept, style, and industry, showcasing different approaches to visual identity and creative branding.
+            </div>
+            <div class="project-images">
+                <img src="LogoFolio/final-01.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="LogoFolio/final-02.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="LogoFolio/final-03.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="LogoFolio/final-04.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="LogoFolio/final-05.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="LogoFolio/final-06.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="LogoFolio/final-07.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="LogoFolio/final-08.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="LogoFolio/final-09.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="LogoFolio/final-10.jpg" style="max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Scrollspy navigation logic
+        const sections = [
+            { id: 'section-reverie', btn: document.querySelector('.skills-sidebar-btn[data-section="reverie"]') },
+            { id: 'section-azion', btn: document.querySelector('.skills-sidebar-btn[data-section="azion"]') },
+            { id: 'section-velith', btn: document.querySelector('.skills-sidebar-btn[data-section="velith"]') },
+            { id: 'section-nomino', btn: document.querySelector('.skills-sidebar-btn[data-section="nomino"]') },
+            { id: 'section-goat', btn: document.querySelector('.skills-sidebar-btn[data-section="goat"]') },
+            { id: 'section-stilib', btn: document.querySelector('.skills-sidebar-btn[data-section="stilib"]') },
+            { id: 'section-trinidad', btn: document.querySelector('.skills-sidebar-btn[data-section="trinidad"]') },
+            { id: 'section-eidolon', btn: document.querySelector('.skills-sidebar-btn[data-section="eidolon"]') },
+            { id: 'section-neo', btn: document.querySelector('.skills-sidebar-btn[data-section="neo"]') },
+            { id: 'section-logofolio', btn: document.querySelector('.skills-sidebar-btn[data-section="logofolio"]') },
+            // Add more sections here as needed
+        ];
+
+        function onScrollSpy() {
+            let scrollPos = window.scrollY || document.documentElement.scrollTop;
+            let offset = 120; // adjust for header/sidebar height
+            let currentSection = sections[0];
+            for (let sec of sections) {
+                let el = document.getElementById(sec.id);
+                if (el && el.offsetTop - offset <= scrollPos) {
+                    currentSection = sec;
+                }
+            }
+            sections.forEach(s => s.btn.classList.remove('active'));
+            currentSection.btn.classList.add('active');
+        }
+        window.addEventListener('scroll', onScrollSpy);
+        // Initial highlight
+        onScrollSpy();
+
+        // Sidebar button click scrolls to section
+        sections.forEach(sec => {
+            sec.btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const el = document.getElementById(sec.id);
+                if (el) {
+                    // On mobile, close sidebar after click
+                    if (window.innerWidth <= 600) {
+                        document.querySelector('.skills-sidebar').classList.remove('open');
+                    }
+                    window.scrollTo({
+                        top: el.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Sidebar toggle logic for mobile
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.skills-sidebar');
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('open');
+        });
+
+        // Close sidebar when clicking outside (mobile only)
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth > 600) return;
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</body>
+</html>

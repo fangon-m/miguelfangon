@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Miguel Fangon - Design Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../logo-06.png" type="image/png">
+    <style>
+        .skills-sidebar {
+            position: fixed;
+            left: 32px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 330px;
+            background: transparent;
+            border-radius: 15px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 0;
+            gap: 0;
+            z-index: 100;
+        }
+        .skills-sidebar-btn {
+            background: none;
+            border: none;
+            padding: 16px 24px;
+            font-size: 1.1em;
+            color: #222;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .skills-sidebar-btn.active,
+        .skills-sidebar-btn:hover {
+            background: #222;
+            color: #fff;
+        }
+        .skills-section {
+            display: none;
+        }
+        .skills-section.active {
+            display: block;
+        }
+        .skills-main {
+            margin-right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        body {
+            background: #f8fafc;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        .project-view-container {
+            max-width: 900px;
+            margin: 40px auto 40px auto;
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 40px 24px 48px 24px;
+        }
+        .return-btn {
+            display: inline-block;
+            margin-bottom: 32px;
+            background: #222;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 24px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .return-btn:hover {
+            background: #444;
+        }
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .project-description {
+            color: #64748b;
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+            .project-images {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                margin-bottom: 40px;
+                width: 100%;
+                align-items: stretch;
+                align-items: center;
+            }
+            .project-images img,
+            .project-images video {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+                background: #fff;
+                display: block;
+                margin: 0;
+            }
+         .project-images video {
+            margin: 10px;
+        }
+        .project-images-packaging {
+            display: flex;
+                flex-direction: column;
+                gap: 24px;
+                margin-bottom: 40px;
+                width: 100%;
+                align-items: stretch;
+                align-items: center;
+        }
+        .project-images-packaging img,
+            .project-images-packaging video {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 0;
+            }
+        .project-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 16px;
+        }
+        .project-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 7px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        @media (max-width: 600px) {
+            .skills-sidebar {
+                position: fixed;
+                right: 0;
+                left: auto;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(248,250,252,0.98);
+                box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+                border-radius: 0;
+                z-index: 200;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0;
+                padding: 0;
+                transform: translateY(-100%);
+                transition: transform 0.3s;
+            }
+            .skills-sidebar.open {
+                transform: translateY(0);
+            }
+            .sidebar-toggle {
+                display: block;
+            }
+            .project-view-container {
+                padding: 16px 4px 32px 4px;
+            }
+            .project-title {
+                font-size: 1.5rem;
+            }
+        }
+        @media (min-width: 601px) {
+            .sidebar-toggle {
+                display: none;
+            }
+        }
+        @media (min-width: 601px) {
+            .sidebar-toggle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="sidebar-toggle" style="position:fixed; right:16px; top:16px; z-index:201; background:#222; color:#fff; border:none; border-radius:10px; padding:10px 18px; font-size:1.1em; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <i class="fa fa-bars"></i>
+    </button>
+    <div class="skills-sidebar" style="margin-top:60px;">
+        <a href="../index.html#projects" class="return-btn" style="display:block; margin:0 0 24px 0; background:#222; color:#fff; border:none; border-radius:10px; padding:10px 24px; font-size:1em; cursor:pointer; text-decoration:none; transition:background 0.2s; text-align:center;">&larr; Return</a>
+        <button class="skills-sidebar-btn active" data-section="landing">Landing Pages</button>
+        <button class="skills-sidebar-btn" data-section="youtube">YouTube Assets</button>
+        <button class="skills-sidebar-btn" data-section="cover">Magazine Covers</button>
+        <button class="skills-sidebar-btn" data-section="info">Infographics</button>
+        <button class="skills-sidebar-btn" data-section="packaging">Packaging Design</button>
+        <button class="skills-sidebar-btn" data-section="posters">Posters & Advertisements</button>
+        <button class="skills-sidebar-btn" data-section="mockups">Mockups</button>
+        <!-- Add more buttons for other sections as needed -->
+    </div>
+    <div class="skills-main">
+        <div class="project-view-container" id="section-landing">
+            <div class="project-title">Landing Pages</div>
+            <div class="project-description">
+                The design emphasizes clarity, strong calls to action, and user engagement to drive conversions.
+            </div>
+            <div class="project-images">
+                <video src="Skills/landing-page-1.mp4" autoplay loop muted playsinline style="width:100%; max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;"></video>
+                <video src="Skills/landing-page-2.mp4" autoplay loop muted playsinline style="width:100%; max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;"></video>
+                <img src="Skills/landing-page-3.png" style="width:100%; max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">Premiere Pro</span>
+                <span class="project-tag"><i class="fa-brands fa-figma"></i> Figma</span>
+            </div>
+        </div>
+
+        <div class="project-view-container" id="section-youtube">
+            <div class="project-title">YouTube Assets</div>
+            <div class="project-description">
+                Custom Youtube banner and thumbnails designed for maximum click-through and brand consistency.
+            </div>
+            <div class="project-images">
+                <img src="Skills/gamer-youtube.jpg" alt="YouTube Thumbnail 1" style="border:3px solid rgba(31, 31, 31, 0.516); max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Skills/house-youtube.jpg" alt="YouTube Thumbnail 2" style="border:3px solid rgba(31, 31, 31, 0.516); max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Skills/gym-youtube.jpg" alt="YouTube Thumbnail 2" style="border:3px solid rgba(31, 31, 31, 0.516); max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+            </div>
+        </div>
+
+        <div class="project-view-container" id="section-cover">
+            <div class="project-title">Magazine Covers</div>
+            <div class="project-description">
+                Custom magazine covers designed for maximum impact and brand consistency for Reverie Magazine.
+            </div>
+            <div class="project-images">
+                <img src="Skills/vol-1.jpg" alt="Magazine Cover 1" style="max-width:620px;">
+                <img src="Skills/vol-2.jpg" alt="Magazine Cover 2" style="max-width:620px;">
+                <img src="Skills/vol-3.jpg" alt="Magazine Cover 3" style="max-width:620px;">
+                <img src="Skills/vol-6.jpg" alt="Magazine Cover 6" style="max-width:620px;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">Lightroom</span>
+                <span class="project-tag">InDesign</span>
+            </div>
+        </div>
+
+        <div class="project-view-container" id="section-info">
+            <div class="project-title">Infographics</div>
+            <div class="project-description">
+                Infographics designed to convey complex information in a clear and engaging manner.
+            </div>
+            <div class="project-images">
+                <img src="Skills/info-1wTextures.jpg" alt="Infographic 1" style="max-width: 620px;">
+                <img src="Skills/info-2wTextures.jpg" alt="Infographic 2" style="max-width: 620px;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">InDesign</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-packaging">
+            <div class="project-title">Packaging Design</div>
+            <div class="project-description">
+                Creative packaging designs that enhance product appeal and brand identity.
+            </div>
+            <div class="project-images-packaging">
+                <img src="Skills/dieline_milk-01.png" alt="Packaging Design 1" style="max-width: 700px;">
+                <img src="Skills/dieline_milk-02.png" alt="Packaging Design 2" style="max-width: 700px;">
+                <img src="Skills/Packaging-02.png" alt="Packaging Design 3" style="max-width: 610px;">
+                <img src="Skills/Gush-01.jpg" alt="Packaging Design 5" style="max-width: 620px;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+            </div>
+        </div>
+        <div class="project-view-container" id="section-posters">
+            <div class="project-title">Posters & Advertisements</div>
+            <div class="project-description">
+               Designed for various events and promotions to showcase creativity and brand identity through banners, posters, and other Ad assets.
+            </div>
+            <div class="project-images">
+                <img src="Skills/neoneuro-04.jpg" alt="Poster 1" style="max-width: 620px;">
+                <img src="Skills/neoneuro-09.jpg" alt="Poster 2" style="max-width: 620px;">
+                <img src="Skills/reverie-13.jpg" alt="Poster 3" style="max-width: 620px;">
+                <img src="Skills/reverie-14.jpg" alt="Poster 4" style="max-width: 620px;">
+                <img src="Skills/chandlers-17.jpg" alt="Poster 5" style="max-width: 620px;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+            </div>
+    </div>
+        <div class="project-view-container" id="section-mockups">
+            <div class="project-title">Mockups</div>
+            <div class="project-description">
+                Mockups designed to portray products in realistic settings, enhancing visual appeal and presentation.
+            </div>
+            <div class="project-images">
+                <img src="Skills/gamma-23.jpg" alt="Mockup 1" style="max-width: 620px;">
+                <img src="TRINIDAD Tour Fest/FINAL-11.jpg" alt="Mockup 2" style="max-width: 620px;">
+                <img src="Skills/natura-11.jpg" alt="Mockup 3" style="max-width: 620px;">
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+            </div>
+        </div>
+    <!-- Add more sections as needed -->
+    <script>
+        // Scrollspy navigation logic
+        const sections = [
+            { id: 'section-landing', btn: document.querySelector('.skills-sidebar-btn[data-section="landing"]') },
+            { id: 'section-youtube', btn: document.querySelector('.skills-sidebar-btn[data-section="youtube"]') },
+            { id: 'section-cover', btn: document.querySelector('.skills-sidebar-btn[data-section="cover"]') },
+            { id: 'section-info', btn: document.querySelector('.skills-sidebar-btn[data-section="info"]') },
+            { id: 'section-packaging', btn: document.querySelector('.skills-sidebar-btn[data-section="packaging"]') },
+            { id: 'section-posters', btn: document.querySelector('.skills-sidebar-btn[data-section="posters"]') },
+            { id: 'section-mockups', btn: document.querySelector('.skills-sidebar-btn[data-section="mockups"]') }
+            // Add more sections here as needed
+        ];
+
+        function onScrollSpy() {
+            let scrollPos = window.scrollY || document.documentElement.scrollTop;
+            let offset = 120; // adjust for header/sidebar height
+            let currentSection = sections[0];
+            for (let sec of sections) {
+                let el = document.getElementById(sec.id);
+                if (el && el.offsetTop - offset <= scrollPos) {
+                    currentSection = sec;
+                }
+            }
+            sections.forEach(s => s.btn.classList.remove('active'));
+            currentSection.btn.classList.add('active');
+        }
+        window.addEventListener('scroll', onScrollSpy);
+        // Initial highlight
+        onScrollSpy();
+
+        // Sidebar button click scrolls to section
+        sections.forEach(sec => {
+            sec.btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const el = document.getElementById(sec.id);
+                if (el) {
+                    // On mobile, close sidebar after click
+                    if (window.innerWidth <= 600) {
+                        document.querySelector('.skills-sidebar').classList.remove('open');
+                    }
+                    window.scrollTo({
+                        top: el.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Sidebar toggle logic for mobile
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebar = document.querySelector('.skills-sidebar');
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('open');
+        });
+
+        // Close sidebar when clicking outside (mobile only)
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth > 600) return;
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
+                sidebar.classList.remove('open');
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</body>
+</html>
