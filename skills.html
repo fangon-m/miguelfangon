@@ -212,6 +212,7 @@
     <div class="skills-sidebar" style="margin-top:60px;">
         <a href="../index.html#projects" class="return-btn" style="display:block; margin:0 0 24px 0; background:#222; color:#fff; border:none; border-radius:10px; padding:10px 24px; font-size:1em; cursor:pointer; text-decoration:none; transition:background 0.2s; text-align:center;">&larr; Return</a>
         <button class="skills-sidebar-btn active" data-section="landing">Landing Pages</button>
+        <button class="skills-sidebar-btn active" data-section="reels">Reels / Shorts</button>
         <button class="skills-sidebar-btn" data-section="youtube">YouTube Assets</button>
         <button class="skills-sidebar-btn" data-section="cover">Magazine Covers</button>
         <button class="skills-sidebar-btn" data-section="info">Infographics</button>
@@ -237,6 +238,34 @@
                 <span class="project-tag">Illustrator</span>
                 <span class="project-tag">Premiere Pro</span>
                 <span class="project-tag"><i class="fa-brands fa-figma"></i> Figma</span>
+            </div>
+        </div>
+
+        <div class="project-view-container" id="section-reels">
+            <div class="project-title">Reels / Shorts</div>
+            <div class="project-description">
+                Engaging video content designed for social media platforms, focusing on quick storytelling and visual impact. Supported with AI-generated voiceovers.
+                <br><br><p style="font-style: italic;">Click the thumbnails to play.</p>
+            </div>
+            <div class="project-images">
+                <a href="https://www.youtube.com/shorts/F2IQFNhg2Aw" target="_blank">
+                <img src="https://img.youtube.com/vi/F2IQFNhg2Aw/maxresdefault.jpg" 
+                    alt="YouTube Short Thumbnail" 
+                    style="width:100%; max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block; cursor:pointer;">
+                </a>
+            </div>
+                        <div class="project-images">
+                <a href="https://www.youtube.com/shorts/SFR5artQJeY" target="_blank">
+                <img src="https://img.youtube.com/vi/SFR5artQJeY/maxresdefault.jpg" 
+                    alt="YouTube Short Thumbnail" 
+                    style="width:100%; max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block; cursor:pointer;">
+                </a>
+            </div>
+
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Premiere Pro</span>
+                <span class="project-tag">CapCut</span>
             </div>
         </div>
 
@@ -358,6 +387,7 @@
         // Scrollspy navigation logic
         const sections = [
             { id: 'section-landing', btn: document.querySelector('.skills-sidebar-btn[data-section="landing"]') },
+            { id: 'section-landing', btn: document.querySelector('.skills-sidebar-btn[data-section="reels"]') },
             { id: 'section-youtube', btn: document.querySelector('.skills-sidebar-btn[data-section="youtube"]') },
             { id: 'section-cover', btn: document.querySelector('.skills-sidebar-btn[data-section="cover"]') },
             { id: 'section-info', btn: document.querySelector('.skills-sidebar-btn[data-section="info"]') },
@@ -421,4 +451,5 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </body>
 </html>
+
 
