@@ -211,6 +211,7 @@
     </button>
     <div class="skills-sidebar" style="margin-top:60px;">
         <a href="../index.html#projects" class="return-btn" style="display:block; margin:0 0 24px 0; background:#222; color:#fff; border:none; border-radius:10px; padding:10px 24px; font-size:1em; cursor:pointer; text-decoration:none; transition:background 0.2s; text-align:center;">&larr; Return</a>
+        <button class="skills-sidebar-btn active" data-section="social">Social Media Ads</button>
         <button class="skills-sidebar-btn active" data-section="landing">Landing Pages</button>
         <button class="skills-sidebar-btn active" data-section="reels">Reels / Shorts</button>
         <button class="skills-sidebar-btn" data-section="posters">Posters</button>
@@ -218,11 +219,29 @@
         <button class="skills-sidebar-btn" data-section="cover">Magazine Covers</button>
         <button class="skills-sidebar-btn" data-section="info">Infographics</button>
         <button class="skills-sidebar-btn" data-section="packaging">Packaging Design</button>
-        <button class="skills-sidebar-btn" data-section="banners">Banners & Advertisements</button>
+        <button class="skills-sidebar-btn" data-section="banners">Banners</button>
         <button class="skills-sidebar-btn" data-section="mockups">Mockups</button>
         <!-- Add more buttons for other sections as needed -->
     </div>
     <div class="skills-main">
+
+        <div class="project-view-container" id="section-social">
+            <div class="project-title">Social Media Ads</div>
+            <div class="project-description">
+                Quick turnaround projects emphasizing digital marketing strategy to promote products, services, and brands.
+            </div>
+            <div class="project-images">
+                <img src="Skills/compiled.jpg" style="width:100%; max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+                <img src="Skills/compiled-2.jpg" style="width:100%; max-width:700px; border-radius:16px; box-shadow:0 2px 8px rgba(0,0,0,0.08); background:#fff; display:block;">
+            </div>
+            </div>
+            <div class="project-tags">
+                <span class="project-tag">Photoshop</span>
+                <span class="project-tag">Illustrator</span>
+                <span class="project-tag">Canva</span>
+            </div>
+        </div>
+        
         <div class="project-view-container" id="section-landing">
             <div class="project-title">Landing Pages</div>
             <div class="project-description">
@@ -272,7 +291,7 @@
         <div class="project-view-container" id="section-posters">
             <div class="project-title">Posters</div>
             <div class="project-description">
-                A collection of poster works encompassing social media ads, sports posters, etc.
+                A collection of poster works encompassing social media posts, sports posters, etc.
             </div>
             <div class="project-images-posters">
                 <img src="Skills/neoneuro-04.jpg" alt="Poster 1" style="max-width: 700px;">
@@ -388,6 +407,7 @@
     <script>
         // Scrollspy navigation logic
         const sections = [
+            { id: 'section-social', btn: document.querySelector('.skills-sidebar-btn[data-section="landing"]') },
             { id: 'section-landing', btn: document.querySelector('.skills-sidebar-btn[data-section="landing"]') },
             { id: 'section-reels', btn: document.querySelector('.skills-sidebar-btn[data-section="reels"]') },
             { id: 'section-posters', btn: document.querySelector('.skills-sidebar-btn[data-section="posters"]') },
@@ -453,6 +473,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </body>
 </html>
+
 
 
 
